@@ -13,6 +13,16 @@
     
     rootViewController = [[PhotoViewController alloc] initWithNibName:nil bundle:nil];
     rootViewController.view.frame = [[UIScreen mainScreen] bounds];
+    
+    NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *window in windows) {
+            if(window.rootViewController == nil){
+                //UIViewController *vc = [[UIViewController alloc]initWithNibName:nil
+                //                                                     bundle:nil];
+                window.rootViewController = rootViewController;
+            }
+        }
+    
     [self.window addSubview:rootViewController.view];
     
     [self.window makeKeyAndVisible];
